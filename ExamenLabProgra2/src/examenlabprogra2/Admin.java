@@ -25,7 +25,7 @@ public class Admin extends javax.swing.JFrame {
      */
     public Admin() {
         initComponents();
-        Personas.add(new Persona("Nasralla", 45, 801, 1413, "Copán", 15000));
+        Personas.add(new Empleado("Administrador", "Nasralla", 50, 8011, 8777, "Copán", 123456));
 
     }
 
@@ -75,9 +75,9 @@ public class Admin extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         ListaModTb = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        ModificarBt = new javax.swing.JButton();
         pa_Eliminar = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        CerrarBt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -328,10 +328,10 @@ public class Admin extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(ListaModTb);
 
-        jButton1.setText("Guardar Cambios");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        ModificarBt.setText("Guardar Cambios");
+        ModificarBt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                ModificarBtMouseClicked(evt);
             }
         });
 
@@ -341,7 +341,7 @@ public class Admin extends javax.swing.JFrame {
             pa_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pa_ModificarLayout.createSequentialGroup()
                 .addGroup(pa_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(ModificarBt)
                     .addGroup(pa_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pa_ModificarLayout.createSequentialGroup()
                             .addContainerGap()
@@ -366,7 +366,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(ModificarBt)
                 .addContainerGap())
         );
 
@@ -385,10 +385,10 @@ public class Admin extends javax.swing.JFrame {
 
         tp_Principal.addTab("Eliminar", pa_Eliminar);
 
-        jButton2.setText("Cerrar Sesión");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        CerrarBt.setText("Cerrar Sesión");
+        CerrarBt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                CerrarBtMouseClicked(evt);
             }
         });
 
@@ -401,7 +401,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2))
+                        .addComponent(CerrarBt))
                     .addComponent(tp_Principal))
                 .addContainerGap())
         );
@@ -411,31 +411,29 @@ public class Admin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tp_Principal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(CerrarBt)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void CerrarBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarBtMouseClicked
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_CerrarBtMouseClicked
 
     private void btAgregarPersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAgregarPersonaMouseClicked
         // TODO add your handling code here:
         if (tp_TipoPersona.getSelectedIndex() == 0) {
             try {
-                Persona p = new Empleado();
-                p.setDepartamento(DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()));
-                p.setDinero(Float.parseFloat(DineroTf.getText()));
-                p.setEdad(Integer.parseInt(EdadTf.getText()));
-                p.setID(Integer.parseInt(IdTf.getText()));
-                p.setID_Boleto(Integer.parseInt(IdBoletTf.getText()));
-                p.setNombre(NombreTf.getText());
-                ((Empleado) p).setEmpleo(EmpleoTf.getText());
-                Personas.add(p);
+                Personas.add(new Empleado(
+                        EmpleoTf.getText(), NombreTf.getText(),
+                        Integer.parseInt(EdadTf.getText()), 
+                        Integer.parseInt(IdTf.getText()),
+                        Integer.parseInt(IdBoletTf.getText()),
+                        DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()),
+                        Float.parseFloat(DineroTf.getText())));
                 JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Debe llenar todo el formulario");
@@ -443,7 +441,7 @@ public class Admin extends javax.swing.JFrame {
         }
         if (tp_TipoPersona.getSelectedIndex() == 1) {
             try {
-                Persona p = new Estudiante();
+                Estudiante p = new Estudiante();
                 p.setDepartamento(DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()));
                 p.setDinero(Float.parseFloat(DineroTf.getText()));
                 p.setEdad(Integer.parseInt(EdadTf.getText()));
@@ -459,7 +457,7 @@ public class Admin extends javax.swing.JFrame {
         }
         if (tp_TipoPersona.getSelectedIndex() == 2) {
             try {
-                Persona p = new Politico();
+                Politico p = new Politico();
                 p.setDepartamento(DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()));
                 p.setDinero(Float.parseFloat(DineroTf.getText()));
                 p.setEdad(Integer.parseInt(EdadTf.getText()));
@@ -501,8 +499,8 @@ public class Admin extends javax.swing.JFrame {
             ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{},
                     new String[]{
-                        "Nombre","Edad","ID","ID del Boleto"
-                        ,"Departamento","Dinero","Atributo"
+                        "Nombre", "Edad", "ID", "ID del Boleto",
+                         "Departamento", "Dinero", "Atributo"
                     }
             ));
             DefaultComboBoxModel modeloCB = new DefaultComboBoxModel();
@@ -516,49 +514,94 @@ public class Admin extends javax.swing.JFrame {
     private void ModificarCbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ModificarCbItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == 2) {
-            if (true) {
+            if (Personas.get(ModificarCb.getSelectedIndex())instanceof Empleado) {
                 ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
-                            "Nombre", "Edad", "ID", "Sexo",
-                            "Estado Civil", "Usuario", "Contraseña",
-                            "Rol", "Trabajo", "Altura", "Peso"
+                            "Nombre", "Edad", "ID", "ID del Boleto",
+                             "Departamento", "Dinero", "Empleo"
                         }
                 ));
                 DefaultTableModel modelo = (DefaultTableModel) ListaModTb.getModel();
-                /*Familiar t = (Familiar) Personas.get(ModificarCb.getSelectedIndex());
+                Empleado t = (Empleado) Personas.get(ModificarCb.getSelectedIndex());
                 Object[] filanueva = {
                     t.getNombre(),
                     t.getEdad(),
                     t.getID(),
-                    t.getSexo(),
-                    t.getEstadoCivil(),
-                    t.getUsuario(),
-                    t.getContraseña(),
-                    t.getRol(),
-                    t.getTrabajo(),
-                    t.getAltura(),
-                    t.getPeso()
+                    t.getID_Boleto(),t.getDepartamento(),
+                    t.getDinero(),t.getEmpleo()
                 };
                 modelo.addRow(filanueva);
-                ListaModTb.setModel(modelo);*/
+                ListaModTb.setModel(modelo);
+            }
+            if (Personas.get(ModificarCb.getSelectedIndex())instanceof Estudiante) {
+                ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{
+                            "Nombre", "Edad", "ID", "ID del Boleto",
+                             "Departamento", "Dinero", "Carrera que estudia"
+                        }
+                ));
+                DefaultTableModel modelo = (DefaultTableModel) ListaModTb.getModel();
+                Estudiante t = (Estudiante) Personas.get(ModificarCb.getSelectedIndex());
+                Object[] filanueva = {
+                    t.getNombre(),
+                    t.getEdad(),
+                    t.getID(),
+                    t.getID_Boleto(),t.getDepartamento(),
+                    t.getDinero(),t.getCarrera()
+                };
+                modelo.addRow(filanueva);
+                ListaModTb.setModel(modelo);
+            }
+            if (Personas.get(ModificarCb.getSelectedIndex())instanceof Politico) {
+                ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
+                        new Object[][]{},
+                        new String[]{
+                            "Nombre", "Edad", "ID", "ID del Boleto",
+                             "Departamento", "Dinero", "Afiliacion"
+                        }
+                ));
+                DefaultTableModel modelo = (DefaultTableModel) ListaModTb.getModel();
+                Politico t = (Politico) Personas.get(ModificarCb.getSelectedIndex());
+                Object[] filanueva = {
+                    t.getNombre(),
+                    t.getEdad(),
+                    t.getID(),
+                    t.getID_Boleto(),t.getDepartamento(),
+                    t.getDinero(),t.getAfiliacion()
+                };
+                modelo.addRow(filanueva);
+                ListaModTb.setModel(modelo);
             }
         }
     }//GEN-LAST:event_ModificarCbItemStateChanged
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void ModificarBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarBtMouseClicked
         // TODO add your handling code here:
         try {
             int pos = ModificarCb.getSelectedIndex();
             Personas.get(pos).setNombre(ListaModTb.getValueAt(0, 0).toString());
             Personas.get(pos).setEdad(Integer.parseInt(ListaModTb.getValueAt(0, 1).toString()));
             Personas.get(pos).setID(Integer.parseInt(ListaModTb.getValueAt(0, 2).toString()));
+            Personas.get(pos).setID_Boleto(Integer.parseInt(ListaModTb.getValueAt(0, 3).toString()));
+            Personas.get(pos).setDepartamento(ListaModTb.getValueAt(0, 4).toString());
+            Personas.get(pos).setDinero(Float.parseFloat(ListaModTb.getValueAt(0, 5).toString()));
+            if (Personas.get(pos) instanceof Empleado) {
+                ((Empleado)Personas.get(pos)).setEmpleo(ListaModTb.getValueAt(0, 6).toString());
+            }
+            if (Personas.get(pos) instanceof Estudiante) {
+                ((Estudiante)Personas.get(pos)).setCarrera(ListaModTb.getValueAt(0, 6).toString());
+            }
+            if (Personas.get(pos) instanceof Politico) {
+                ((Politico)Personas.get(pos)).setAfiliacion(ListaModTb.getValueAt(0, 6).toString());
+            }
             JOptionPane.showMessageDialog(this, "Se guardaron los cambios");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Algo salió mal");
         }
 
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_ModificarBtMouseClicked
 
     /**
      * @param args the command line arguments
@@ -600,6 +643,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> AfiliacionCb;
     private javax.swing.JPanel Agregar;
     private javax.swing.JTextField CarreraTf;
+    private javax.swing.JButton CerrarBt;
     private javax.swing.JComboBox<String> DepartamentoCb;
     private javax.swing.JTextField DineroTf;
     private javax.swing.JTextField EdadTf;
@@ -608,12 +652,11 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField IdTf;
     private javax.swing.JTable ListaModTb;
     private javax.swing.JTable ListaTb;
+    private javax.swing.JButton ModificarBt;
     private javax.swing.JComboBox<String> ModificarCb;
     private javax.swing.JTextField NombreTf;
     private javax.swing.JButton btAgregarPersona;
     private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
