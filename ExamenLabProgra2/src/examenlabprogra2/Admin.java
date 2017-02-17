@@ -39,6 +39,9 @@ public class Admin extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup4 = new javax.swing.ButtonGroup();
+        CerrarBt = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         tp_Principal = new javax.swing.JTabbedPane();
         Agregar = new javax.swing.JPanel();
         tp_Agregar = new javax.swing.JTabbedPane();
@@ -77,9 +80,19 @@ public class Admin extends javax.swing.JFrame {
         ListaModTb = new javax.swing.JTable();
         ModificarBt = new javax.swing.JButton();
         pa_Eliminar = new javax.swing.JPanel();
-        CerrarBt = new javax.swing.JButton();
+        EliminarCb = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        EliminarBt = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        CerrarBt.setText("Cerrar Sesión");
+        CerrarBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CerrarBtMouseClicked(evt);
+            }
+        });
 
         tp_Principal.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -126,7 +139,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(EmpleoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         tp_TipoPersona.addTab("Empleado", jPanel7);
@@ -151,7 +164,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(CarreraTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         tp_TipoPersona.addTab("Estudiante", jPanel8);
@@ -178,7 +191,7 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel31)
                     .addComponent(AfiliacionCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         tp_TipoPersona.addTab("Politico", jPanel1);
@@ -214,7 +227,7 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(pa_PersonaLayout.createSequentialGroup()
                         .addGap(238, 238, 238)
                         .addComponent(btAgregarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         pa_PersonaLayout.setVerticalGroup(
             pa_PersonaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +259,7 @@ public class Admin extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(DineroTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tp_TipoPersona))
+                    .addComponent(tp_TipoPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(btAgregarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
@@ -297,7 +310,7 @@ public class Admin extends javax.swing.JFrame {
             pa_ListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pa_ListarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pa_ListarLayout.setVerticalGroup(
@@ -305,7 +318,7 @@ public class Admin extends javax.swing.JFrame {
             .addGroup(pa_ListarLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tp_Principal.addTab("Listar", pa_Listar);
@@ -353,7 +366,7 @@ public class Admin extends javax.swing.JFrame {
                         .addGroup(pa_ModificarLayout.createSequentialGroup()
                             .addGap(37, 37, 37)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pa_ModificarLayout.setVerticalGroup(
             pa_ModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,52 +378,104 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(jLabel27))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(ModificarBt)
                 .addContainerGap())
         );
 
         tp_Principal.addTab("Modificar", pa_Modificar);
 
+        EliminarCb.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EliminarCbItemStateChanged(evt);
+            }
+        });
+
+        jLabel28.setText("Persona");
+
+        EliminarBt.setText("Eliminar");
+        EliminarBt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminarBtMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pa_EliminarLayout = new javax.swing.GroupLayout(pa_Eliminar);
         pa_Eliminar.setLayout(pa_EliminarLayout);
         pa_EliminarLayout.setHorizontalGroup(
             pa_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGroup(pa_EliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel28)
+                .addGap(65, 65, 65)
+                .addComponent(EliminarCb, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(EliminarBt)
+                .addGap(74, 74, 74))
         );
         pa_EliminarLayout.setVerticalGroup(
             pa_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 426, Short.MAX_VALUE)
+            .addGroup(pa_EliminarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pa_EliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EliminarCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28)
+                    .addComponent(EliminarBt))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         tp_Principal.addTab("Eliminar", pa_Eliminar);
 
-        CerrarBt.setText("Cerrar Sesión");
-        CerrarBt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CerrarBtMouseClicked(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tp_Principal)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tp_Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Operaciones Básicas", jPanel3);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 711, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 378, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Venta", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(CerrarBt))
-                    .addComponent(tp_Principal))
+                .addContainerGap(620, Short.MAX_VALUE)
+                .addComponent(CerrarBt)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tp_Principal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CerrarBt)
                 .addContainerGap())
         );
@@ -429,7 +494,7 @@ public class Admin extends javax.swing.JFrame {
             try {
                 Personas.add(new Empleado(
                         EmpleoTf.getText(), NombreTf.getText(),
-                        Integer.parseInt(EdadTf.getText()), 
+                        Integer.parseInt(EdadTf.getText()),
                         Integer.parseInt(IdTf.getText()),
                         Integer.parseInt(IdBoletTf.getText()),
                         DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()),
@@ -441,15 +506,14 @@ public class Admin extends javax.swing.JFrame {
         }
         if (tp_TipoPersona.getSelectedIndex() == 1) {
             try {
-                Estudiante p = new Estudiante();
-                p.setDepartamento(DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()));
-                p.setDinero(Float.parseFloat(DineroTf.getText()));
-                p.setEdad(Integer.parseInt(EdadTf.getText()));
-                p.setID(Integer.parseInt(IdTf.getText()));
-                p.setID_Boleto(Integer.parseInt(IdBoletTf.getText()));
-                p.setNombre(NombreTf.getText());
-                ((Estudiante) p).setCarrera(CarreraTf.getText());
-                Personas.add(p);
+                Personas.add(new Empleado(
+                        EmpleoTf.getText(),
+                        NombreTf.getText(),
+                        Integer.parseInt(EdadTf.getText()),
+                        Integer.parseInt(IdTf.getText()),
+                        Integer.parseInt(IdBoletTf.getText()),
+                        DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()),
+                        Float.parseFloat(DineroTf.getText())));
                 JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Debe llenar todo el formulario");
@@ -457,20 +521,20 @@ public class Admin extends javax.swing.JFrame {
         }
         if (tp_TipoPersona.getSelectedIndex() == 2) {
             try {
-                Politico p = new Politico();
-                p.setDepartamento(DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()));
-                p.setDinero(Float.parseFloat(DineroTf.getText()));
-                p.setEdad(Integer.parseInt(EdadTf.getText()));
-                p.setID(Integer.parseInt(IdTf.getText()));
-                p.setID_Boleto(Integer.parseInt(IdBoletTf.getText()));
-                p.setNombre(NombreTf.getText());
-                ((Politico) p).setAfiliacion(AfiliacionCb.getItemAt(AfiliacionCb.getSelectedIndex()));
-                Personas.add(p);
+                Personas.add(new Estudiante(
+                        CarreraTf.getText(),
+                        NombreTf.getText(),
+                        Integer.parseInt(EdadTf.getText()),
+                        Integer.parseInt(IdTf.getText()),
+                        Integer.parseInt(IdBoletTf.getText()),
+                        DepartamentoCb.getItemAt(DepartamentoCb.getSelectedIndex()),
+                        Float.parseFloat(DineroTf.getText())));
                 JOptionPane.showMessageDialog(this, "Se ha agregado exitosamente");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Debe llenar todo el formulario");
             }
         }
+
     }//GEN-LAST:event_btAgregarPersonaMouseClicked
 
     private void tp_PrincipalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tp_PrincipalStateChanged
@@ -500,7 +564,7 @@ public class Admin extends javax.swing.JFrame {
                     new Object[][]{},
                     new String[]{
                         "Nombre", "Edad", "ID", "ID del Boleto",
-                         "Departamento", "Dinero", "Atributo"
+                        "Departamento", "Dinero", "Atributo"
                     }
             ));
             DefaultComboBoxModel modeloCB = new DefaultComboBoxModel();
@@ -509,17 +573,25 @@ public class Admin extends javax.swing.JFrame {
             }
             ModificarCb.setModel(modeloCB);
         }
+
+        if (tp_Principal.getSelectedIndex() == 3) {
+            DefaultComboBoxModel modeloCB = new DefaultComboBoxModel();
+            for (Persona t : Personas) {
+                modeloCB.addElement(t.getNombre());
+            }
+            EliminarCb.setModel(modeloCB);
+        }
     }//GEN-LAST:event_tp_PrincipalStateChanged
 
     private void ModificarCbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ModificarCbItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == 2) {
-            if (Personas.get(ModificarCb.getSelectedIndex())instanceof Empleado) {
+            if (Personas.get(ModificarCb.getSelectedIndex()) instanceof Empleado) {
                 ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
                             "Nombre", "Edad", "ID", "ID del Boleto",
-                             "Departamento", "Dinero", "Empleo"
+                            "Departamento", "Dinero", "Empleo"
                         }
                 ));
                 DefaultTableModel modelo = (DefaultTableModel) ListaModTb.getModel();
@@ -528,18 +600,18 @@ public class Admin extends javax.swing.JFrame {
                     t.getNombre(),
                     t.getEdad(),
                     t.getID(),
-                    t.getID_Boleto(),t.getDepartamento(),
-                    t.getDinero(),t.getEmpleo()
+                    t.getID_Boleto(), t.getDepartamento(),
+                    t.getDinero(), t.getEmpleo()
                 };
                 modelo.addRow(filanueva);
                 ListaModTb.setModel(modelo);
             }
-            if (Personas.get(ModificarCb.getSelectedIndex())instanceof Estudiante) {
+            if (Personas.get(ModificarCb.getSelectedIndex()) instanceof Estudiante) {
                 ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
                             "Nombre", "Edad", "ID", "ID del Boleto",
-                             "Departamento", "Dinero", "Carrera que estudia"
+                            "Departamento", "Dinero", "Carrera que estudia"
                         }
                 ));
                 DefaultTableModel modelo = (DefaultTableModel) ListaModTb.getModel();
@@ -548,18 +620,18 @@ public class Admin extends javax.swing.JFrame {
                     t.getNombre(),
                     t.getEdad(),
                     t.getID(),
-                    t.getID_Boleto(),t.getDepartamento(),
-                    t.getDinero(),t.getCarrera()
+                    t.getID_Boleto(), t.getDepartamento(),
+                    t.getDinero(), t.getCarrera()
                 };
                 modelo.addRow(filanueva);
                 ListaModTb.setModel(modelo);
             }
-            if (Personas.get(ModificarCb.getSelectedIndex())instanceof Politico) {
+            if (Personas.get(ModificarCb.getSelectedIndex()) instanceof Politico) {
                 ListaModTb.setModel(new javax.swing.table.DefaultTableModel(
                         new Object[][]{},
                         new String[]{
                             "Nombre", "Edad", "ID", "ID del Boleto",
-                             "Departamento", "Dinero", "Afiliacion"
+                            "Departamento", "Dinero", "Afiliacion"
                         }
                 ));
                 DefaultTableModel modelo = (DefaultTableModel) ListaModTb.getModel();
@@ -568,8 +640,8 @@ public class Admin extends javax.swing.JFrame {
                     t.getNombre(),
                     t.getEdad(),
                     t.getID(),
-                    t.getID_Boleto(),t.getDepartamento(),
-                    t.getDinero(),t.getAfiliacion()
+                    t.getID_Boleto(), t.getDepartamento(),
+                    t.getDinero(), t.getAfiliacion()
                 };
                 modelo.addRow(filanueva);
                 ListaModTb.setModel(modelo);
@@ -588,13 +660,13 @@ public class Admin extends javax.swing.JFrame {
             Personas.get(pos).setDepartamento(ListaModTb.getValueAt(0, 4).toString());
             Personas.get(pos).setDinero(Float.parseFloat(ListaModTb.getValueAt(0, 5).toString()));
             if (Personas.get(pos) instanceof Empleado) {
-                ((Empleado)Personas.get(pos)).setEmpleo(ListaModTb.getValueAt(0, 6).toString());
+                ((Empleado) Personas.get(pos)).setEmpleo(ListaModTb.getValueAt(0, 6).toString());
             }
             if (Personas.get(pos) instanceof Estudiante) {
-                ((Estudiante)Personas.get(pos)).setCarrera(ListaModTb.getValueAt(0, 6).toString());
+                ((Estudiante) Personas.get(pos)).setCarrera(ListaModTb.getValueAt(0, 6).toString());
             }
             if (Personas.get(pos) instanceof Politico) {
-                ((Politico)Personas.get(pos)).setAfiliacion(ListaModTb.getValueAt(0, 6).toString());
+                ((Politico) Personas.get(pos)).setAfiliacion(ListaModTb.getValueAt(0, 6).toString());
             }
             JOptionPane.showMessageDialog(this, "Se guardaron los cambios");
         } catch (Exception e) {
@@ -602,6 +674,14 @@ public class Admin extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_ModificarBtMouseClicked
+
+    private void EliminarCbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EliminarCbItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EliminarCbItemStateChanged
+
+    private void EliminarBtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarBtMouseClicked
+        Personas.remove(EliminarCb.getSelectedIndex());
+    }//GEN-LAST:event_EliminarBtMouseClicked
 
     /**
      * @param args the command line arguments
@@ -647,6 +727,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> DepartamentoCb;
     private javax.swing.JTextField DineroTf;
     private javax.swing.JTextField EdadTf;
+    private javax.swing.JButton EliminarBt;
+    private javax.swing.JComboBox<String> EliminarCb;
     private javax.swing.JTextField EmpleoTf;
     private javax.swing.JTextField IdBoletTf;
     private javax.swing.JTextField IdTf;
@@ -662,6 +744,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
@@ -669,10 +752,13 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pa_Eliminar;
     private javax.swing.JPanel pa_Listar;
     private javax.swing.JPanel pa_Modificar;
@@ -682,4 +768,14 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tp_TipoPersona;
     // End of variables declaration//GEN-END:variables
     ArrayList<Persona> Personas = new ArrayList();
+    
+    public int aBinario(String decimal){
+        int binario=0;
+        
+        return binario;
+    }
+    public int aDecimal(String binario){
+        int decimal=0;
+        return decimal;
+    }
 }
